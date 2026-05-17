@@ -23,6 +23,14 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/kestra-io/kestra/devel
 Once the file is downloaded, you can start Kestra with the following command:
 
 docker compose up -d
+
+### 🚀 How to Run
+
+1. Start Kestra locally with Docker:
+2. Open the Kestra UI at http://localhost:8080
+3. Create a new flow and paste either YAML definition
+4. For the email flow, add your SMTP password as a Kestra secret named SMTP_PASSWORD
+5. Execute manually or wait for the scheduled trigger
 ________________________________________
 
 ## 📂 Workflows
@@ -54,11 +62,12 @@ Key concepts demonstrated:
 •	io.kestra.plugin.core.log.Log with inline expression: {{inputs.n1 + inputs.n2}}
 ________________________________________
 
-Platform: Kestra (self-hosted)
-Infrastructure: Docker containers (local)
-Language: YAML (workflow definitions), Python (scripting task)
+#### Platform: 
+1. Kestra (self-hosted)
+2. Infrastructure: Docker containers (local)
+3. Language: YAML (workflow definitions), Python (scripting task)
 
-# 📂 Workflows
+## 📂 Workflow details
 1. email_notification_flow — Scheduled Email Notification
 Namespace: dev.flows
 Sends an automated email notification on a daily schedule using Gmail's SMTP server.
