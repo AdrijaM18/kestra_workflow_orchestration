@@ -1,0 +1,21 @@
+id: ams
+namespace: company.team
+
+inputs:
+  - id: n1
+    type: INT
+    defaults: 10
+
+  - id: n2
+    type: INT
+    defaults: 20
+
+tasks:
+  - id: my_task1
+    type: io.kestra.plugin.scripts.python.Script
+    containerImage: python:3.14.5
+    script: print("My first custom python task runnning!")
+
+  - id: sum_calculation
+    type: io.kestra.plugin.core.log.Log
+    message: "The sum of {{inputs.n1}} and {{inputs.n2}} is: {{inputs.n1 + inputs.n2}}"

@@ -1,0 +1,31 @@
+id: email_notification_flow
+namespace: dev.flows
+
+tasks:
+  - id: send_notification_email
+    type: io.kestra.plugin.email.MailSend
+    from: adrijamukherjee1822@gmail.com
+    to: connectadrijam@gmail.com 
+    subject: "Kestra Flow Execution Notification"
+    plainTextContent: |
+      Hello,
+
+      This email is a notification from your Kestra flow '{{ flow.namespace }}.{{ flow.id }}'.
+      The execution ID is: {{ execution.id }}
+      Triggered at: {{ trigger.date ?? execution.startDate }}
+
+      Best regards,
+      Adrija M
+
+    # SMTP server configuration
+    host: smtp.gmail.com 
+    port: 587 
+    username: "adrijamukherjee1822@gmail.com"
+    password: "{{ secret('SMTP_PASSWORD') }}" 
+    transportStrategy: SMTP_TLS 
+
+triggers:
+  - id: daily_schedule
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "10 12 * * *" 
+    timezone: "Asia/Kolkata"
